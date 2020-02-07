@@ -36,13 +36,13 @@ Citizen.CreateThread(function()
 
 			if vocalLevel == 1 then
 				NetworkSetTalkerProximity(3.001)
-				ShowNotif("L'intensité de votre voix a été réglée sur ~h~~b~faible~w~.")
+				ShowNotif("L'intensité de votre voix a été réglée sur ~b~faible~w~.")
 			elseif vocalLevel == 2 then
 				NetworkSetTalkerProximity(5.001)
-				ShowNotif("L'intensité de votre voix a été réglée sur ~h~~g~normale~w~.")
+				ShowNotif("L'intensité de votre voix a été réglée sur ~g~normale~w~.")
 			elseif vocalLevel == 3 then
 				NetworkSetTalkerProximity(12.091)
-				ShowNotif("L'intensité de votre voix a été réglée sur ~h~~r~élevée~w~.")
+				ShowNotif("L'intensité de votre voix a été réglée sur ~r~élevée~w~.")
 			end
 			Wait(200)
 		elseif not IsControlPressed(1, 288) and keyPressed then
