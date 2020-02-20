@@ -1,8 +1,8 @@
-local vocalLevel = 2
+local level = 2
 
 AddEventHandler('onClientMapStart', function()
-	vocalLevel = 2
-	NetworkSetTalkerProximity(5.001)
+	level = 2
+	NetworkSetTalkerProximity(5.0)
 end)
 
 function ShowNotif(text)
@@ -11,9 +11,7 @@ function ShowNotif(text)
 	DrawNotification(true, false)
 end
 
-
-
-local keyPressed = false
+local pressed = false
 local once = true
 Citizen.CreateThread(function()
 	while true do
@@ -23,28 +21,30 @@ Citizen.CreateThread(function()
 			NetworkSetVoiceActive(1)
 		end
 
-		while IsControlPressed(1, 288) and keyPressed do
+		while IsControlPressed(1, 288) and pressed do
 			Wait(10)
 		end
-		if IsControlPressed(1, 288) and not keyPressed then
-			keyPressed = true
-			vocalLevel = vocalLevel + 1
-			if vocalLevel > 3 then
-				vocalLevel = 1
+		if IsControlPressed(1, 288) and not pressed then
+			pressed = true
+			level = level + 1
+			if level > 3 then
+				level = 1
 			end
-			if vocalLevel == 1 then
-				NetworkSetTalkerProximity(3.001)
+			if level == 1 then
+				NetworkSetTalkerProximity(3.0)
 				ShowNotif("~b~très basse~w~")
-			elseif vocalLevel == 2 then
-				NetworkSetTalkerProximity(5.001)
+			elseif level == 2 then
+				NetworkSetTalkerProximity(5.0)
 				ShowNotif("~g~normale~w~")
-			elseif vocalLevel == 3 then
-				NetworkSetTalkerProximity(12.091)
+			elseif level == 3 then
+				NetworkSetTalkerProximity(12.0)
 				ShowNotif("~o~très élevée~w~")
 			end
 			Wait(200)
-		elseif not IsControlPressed(1, 288) and keyPressed then
-			keyPressed = false
+		elseif not IsControlPressed(1, 288) and pressed then
+			pressed = false
 		end
 	end
 end)
+
+-- by Garfieldouille#0001
